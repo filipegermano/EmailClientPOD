@@ -34,7 +34,7 @@ public class Principal extends HttpServlet {
                 Registry registry = LocateRegistry.getRegistry(ip, 9999);
                 Fachada fachada = (Fachada) registry.lookup("Fachada");
                 List<Pessoa> pessoas = fachada.listaPessoas();
-                request.setAttribute("pessoas", pessoas);
+                request.getSession().setAttribute("pessoas", pessoas);
                 
                 request.getSession().setAttribute("ip", ip);
 

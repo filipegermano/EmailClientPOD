@@ -21,11 +21,7 @@ public class SendEmail extends HttpServlet {
             throws ServletException, IOException {
         
         try {
-            String ip = (String) request.getSession().getAttribute("ip");
-            
-            //Registry registry = LocateRegistry.getRegistry(ip, 9999);
-            
-            //Fachada fachada = (Fachada) registry.lookup("Fachada");
+            String ip = (String) request.getSession().getAttribute("ip");                        
             
             Email email = new Email();
             
@@ -41,8 +37,6 @@ public class SendEmail extends HttpServlet {
             Agendador agendador = new Agendador(ip);
             Timer timer = new Timer();
             timer.schedule(agendador, 0, 3000*60);
-            
-            //String result = fachada.enviaEmail(email);
             
             request.setAttribute("result", "Enviado com sucesso!!!"); 
             

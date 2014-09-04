@@ -1,11 +1,7 @@
 package br.edu.ifpb.emailclientpod;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.Socket;
-import java.net.URL;
 
 /**
  *
@@ -16,10 +12,10 @@ public class Testes {
     Integer count = 0;
 
     public boolean testaServer(String ip) throws IOException {
-        try{
+        try {
             Socket socket = new Socket(ip, 9999);
-            return true;           
-        } catch (Exception e){
+            return true;
+        } catch (Exception e) {
             return false;
         }
     }
