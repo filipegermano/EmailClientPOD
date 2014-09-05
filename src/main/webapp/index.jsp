@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="css/cssform.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <title>Conectar ao Servidor</title>
     </head>
     <body>
