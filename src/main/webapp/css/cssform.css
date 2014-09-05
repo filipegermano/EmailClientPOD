@@ -188,3 +188,11 @@ a:hover {
     float: right;
 }
 
+#email{
+    text-align: center;
+}
+
+p{
+    color: red;
+    text-align: center;
+}

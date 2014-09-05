@@ -3,8 +3,11 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        
         <link href="css/cssform.css" rel="stylesheet" type="text/css">
+        <script src="carregaemail.js" type="text/javascript">
+            
+        </script>
+        
         <title>Enviar E-mail</title>
     </head>
     <body>
@@ -20,16 +23,17 @@
                 <form name="cadastro_pessoa" method="POST" action="SendEmail">
                     <di id="inputs">                         
                         <input type="text" name="remetente" placeholder="Nome do remetente" required="true">
-                        <select multiple >
+                        <div id="email">
                             <c:forEach var="item" items="${pessoas}">
-                                <option>${item.email}</option>
+                                <input type="submit" value="${item.email}" id="${item.nome} ${item.email}" onclick="carregaremail(this)" class="emails">
+                                
                             </c:forEach>                            
-                        </select>
-                        <input type="text" name="destinatarios" placeholder="E-mails destinatário" required="true"> 
+                        </div>
+                        <input type="text" id="destinatarios" name="destinatarios" placeholder="E-mails destinatário" required="true"> 
                         <input type="text" name="assunto" placeholder="Assunto" required="true">
                         <textarea type="text" name="mensagem" placeholder="Mensagem"></textarea>
                         <input type="submit" value="Enviar"> 
-                        <h1> ${result} </h1>
+                        <p> ${result} </p>
                     </di>
                 </form>
                 <br>

@@ -23,32 +23,26 @@ public class Principal extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        try {
-            String ip = request.getParameter("ip");
-
-            Testes testes = new Testes();
-
-            if (testes.testaServer(ip)) {
-                
+        String ip = request.getParameter("ip");
+        Testes testes = new Testes();
+        if (testes.testaServer(ip)) {
+            try {
                 Registry registry = LocateRegistry.getRegistry(ip, 9999);
                 Fachada fachada = (Fachada) registry.lookup("Fachada");
                 List<Pessoa> pessoas = fachada.listaPessoas();
                 request.getSession().setAttribute("pessoas", pessoas);
-                
+
                 request.getSession().setAttribute("ip", ip);
 
                 request.getRequestDispatcher("email.jsp").forward(request, response);
-            } else {
+            } catch (Exception e) {
                 request.setAttribute("result", "Servidor indisponível no momento!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-
-        } catch (RemoteException | NotBoundException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            request.setAttribute("result", "Não conectado");
+        } else {
+            request.setAttribute("result", "Servidor indisponível no momento!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

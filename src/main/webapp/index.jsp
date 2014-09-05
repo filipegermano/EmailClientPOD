@@ -21,7 +21,7 @@
                     <di id="inputs"> 
                         <input type="text" name="ip" placeholder="IP" required="true">                        
                         <input type="submit" value="Conectar"> 
-                        <h1> ${result} </h1>
+                        <p> ${result} </p>
                     </di>
                 </form>
                 <br>
